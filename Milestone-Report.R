@@ -28,3 +28,14 @@ rm(con)
 head(blogs, 10)
 head(twitter, 5)
 head(news, 5)
+
+## Basic report of summary statistics about the data sets
+library(stringi)
+blogsStats <- stri_stats_general(blogs)
+twitterStats <- stri_stats_general(twitter)
+newsStats <- stri_stats_general(news)
+
+allStats <- data.frame(blogsStats, twitterStats, newsStats)
+colnames(allStats) <- c("Blogs", "Twitter", "News")
+t(allStats)
+

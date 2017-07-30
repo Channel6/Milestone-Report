@@ -65,7 +65,19 @@ head(news, 5)
 ```
 
 ## Basic report of summary statistics about the data sets
+```{r echo=TRUE}
+library(stringi)
+```
 
+```{r echo=TRUE}
+blogsStats <- stri_stats_general(blogs)
+twitterStats <- stri_stats_general(twitter)
+newsStats <- stri_stats_general(news)
+
+allStats <- data.frame(blogsStats, twitterStats, newsStats)
+colnames(allStats) <- c("Blogs", "Twitter", "News")
+t(allStats)
+```
 
 ## Report any interesting findings that you amassed so far
 
