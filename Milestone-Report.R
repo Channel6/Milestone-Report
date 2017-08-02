@@ -33,7 +33,7 @@ head(news, 5)
 
 # Compute words per line info on each line for each data type
 rawWPL<-lapply(
-		list(blogs,news,twits),
+		list(blogs,news,tweets),
 		function(x) stri_count_words(x)
 	)
 
@@ -43,11 +43,11 @@ rawstats<-data.frame(
 	t(
 		rbind(
 			sapply(
-				list(blogs,news,twits),
+				list(blogs,news,tweets),
 				stri_stats_general
 			),
 			TotalWords=sapply(
-				list(blogs,news,twits),
+				list(blogs,news,tweets),
 				stri_stats_latex
 			)[4,]
 		)
