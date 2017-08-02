@@ -42,7 +42,7 @@ if (!file.exists("./data/final")) {
 According to the specifications, load the English data set only.
 ```{r echo=TRUE}
 blogs <- readLines("./data/final/en_US/en_US.blogs.txt", encoding = "UTF-8", skipNul=TRUE)
-twitter <-  readLines("./data/final/en_US/en_US.twitter.txt", encoding = "UTF-8", skipNul=TRUE)
+tweets <-  readLines("./data/final/en_US/en_US.twitter.txt", encoding = "UTF-8", skipNul=TRUE)
 
 # News dataset looks like a raw binary file to R. To mitigate this, open the file as a stream,
 # then read the data, line by line, into a new variable.
@@ -65,6 +65,69 @@ head(news, 5)
 ```
 
 ## Basic report of summary statistics about the data sets
+
+We analyse basic statistics of the 3 data files, including **line**, **character** and **word** counts, and Words Per Line (WPL) summaries. Basic histograms are also plotted to identified distribution of these data.
+
+From the statistics, we observed that WPL for blogs are generally higher (at 41.75 mean), followed by news (at 34.41 mean) and tweets (at 12.75 mean). This may be reflective of the expected attention-span of readers of these contents.
+
+From the histograms, we also noticed that the WPL for all data types are right-skewed (i.e. longer right tail). This may be an indication of the general trend towards short and concised communications.
+
+```{r echo=TRUE}
+rawstats<-data.frame(
+	File=c("blogs","news","twitter"),
+	t(
+		rbind(
+			sapply(
+				list(blogs,news,tweets),
+				stri_stats_general
+			),
+			TotalWords=sapply(
+				list(blogs,news,tweets),
+				stri_stats_latex
+			)[4,]
+		)
+	),
+	# Compute words per line summary
+	WPL=rbind(
+		summary(rawWPL[[1]]),
+		summary(rawWPL[[2]]),
+		summary(rawWPL[[3]])
+	)
+)
+print(rawstats)
+```
+```{r echo=TRUE}
+qplot(
+	rawWPL[[1]],
+	geom="histogram",
+	main="Histogram for US Blogs",
+	xlab="No. of Words",
+	ylab="Frequency",
+	binwidth=10
+)
+```{r echo=TRUE}
+qplot(
+	rawWPL[[2]],
+	geom="histogram",
+	main="Histogram for US News",
+	xlab="No. of Words",
+	ylab="Frequency",
+	binwidth=10
+)
+```
+```{r echo=TRUE}
+qplot(
+	rawWPL[[3]],
+	geom="histogram",
+	main="Histogram for US Tweets",
+	xlab="No. of Words",
+	ylab="Frequency",
+	binwidth=1
+)
+```
+```{r echo=TRUE}
+rm(rawWPL);rm(rawstats)
+```
 
 ## Report any interesting findings that you amassed so far
 
