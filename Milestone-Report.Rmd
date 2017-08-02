@@ -38,6 +38,24 @@ if (!file.exists("./data/final")) {
   unzip("Coursera-SwiftKey.zip", exdir = "./data");
 }
 ```
+Load necessary files.
+```{r echo=FALSE}
+# Preload necessary R librabires
+library(dplyr)
+library(doParallel)
+library(stringi)
+library(tm)
+library(slam)
+library(ggplot2)
+library(wordcloud)
+
+# Setup parallel clusters to accelarate execution time
+jobcluster <- makeCluster(detectCores())
+invisible(clusterEvalQ(jobcluster, library(tm)))
+invisible(clusterEvalQ(jobcluster, library(slam)))
+invisible(clusterEvalQ(jobcluster, library(stringi)))
+invisible(clusterEvalQ(jobcluster, library(wordcloud)))
+```
 
 According to the specifications, load the English data set only.
 ```{r echo=TRUE}

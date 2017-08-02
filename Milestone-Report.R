@@ -1,3 +1,19 @@
+# Preload necessary R librabires
+library(dplyr)
+library(doParallel)
+library(stringi)
+library(tm)
+library(slam)
+library(ggplot2)
+library(wordcloud)
+
+# Setup parallel clusters to accelarate execution time
+jobcluster <- makeCluster(detectCores())
+invisible(clusterEvalQ(jobcluster, library(tm)))
+invisible(clusterEvalQ(jobcluster, library(slam)))
+invisible(clusterEvalQ(jobcluster, library(stringi)))
+invisible(clusterEvalQ(jobcluster, library(wordcloud)))
+
 ## download data
 SwiftKey_data_url = "https://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
 SwiftKey_destination_zip = "Coursera-SwiftKey.zip"
