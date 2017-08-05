@@ -171,3 +171,7 @@ Current word prediction will employ mono-gram prediction data. Next-wor predicti
 
 Work on the training predictive models using training data sets within the corpora.
 Compare respective models for each type of text - blogs, news & Twitter & to understand and how these perform against aggregate models trained off the entire corpus that spans the 3 types of text files.
+
+## External resources
+Hat tip [Eric Lim B G](https://rpubs.com/EricLimBG/capstone-milestone "Capstone Project Milestone Report") for reading news as binary.
+
