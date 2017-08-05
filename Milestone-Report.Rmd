@@ -73,7 +73,7 @@ Grab sample data.
 head(blogs, 10)
 ```
 ```{r echo=TRUE}
-head(twitter, 5)
+head(tweets, 5)
 ```
 ```{r echo=TRUE}
 head(news, 5)
@@ -85,7 +85,7 @@ We analyse basic statistics of the 3 data files, including **line**, **character
 
 ```{r echo=TRUE}
 rawstats<-data.frame(
-	File=c("blogs","news","twitter"),
+	File=c("blogs","news","tweets"),
 	t(
 		rbind(
 			sapply(
@@ -142,8 +142,8 @@ rm(rawWPL);rm(rawstats)
 
 ## Report any interesting findings that you amassed so far
 
-The frequency distributions of the “blogs” and “news” corpora are similar (appearing to be log-normal).
-The frequency distribution of the “twitter” corpus is again different, as a result of the 140 character limit.
+The frequency distributions of the "blogs" and "news" corpora are similar (appearing to be log-normal).
+The frequency distribution of the "tweets" corpus is again different, as a result of the 140 character limit.
 
 From the statistics, we observed that WPL for blogs are generally higher (at 41.75 mean), followed by news (at 34.41 mean) and tweets (at 12.75 mean). This may be reflective of the expected attention-span of readers of these contents.
 
