@@ -1,3 +1,4 @@
+# used help from https://rpubs.com/EricLimBG/capstone-milestone
 # Preload necessary R librabires
 library(dplyr)
 library(doParallel)
@@ -71,6 +72,8 @@ rawstats<-data.frame(
 )
 print(rawstats)
 
+## Report any interesting findings that you amassed so far
+
 # Plot histogram for each data type
 qplot(
 	rawWPL[[1]],
@@ -97,9 +100,7 @@ qplot(
 	binwidth=1
 )
 
-#rm(rawWPL);rm(rawstats)
-
-## Report any interesting findings that you amassed so far
-
+rm(rawWPL);rm(rawstats)
 
 ## Get feedback on your plans for creating a prediction algorithm and Shiny app
+
