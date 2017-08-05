@@ -3,9 +3,9 @@ title: "Coursera Capstone Milestone Report"
 author: "Glenn Kerbein"
 date: "July 30, 2017"
 output:
-	html_document:
-		toc: true
-		theme: cerulean
+  html_document:
+    theme: cerulean
+    toc: true 
 ---
 
 ```{r setup, include=FALSE}
