@@ -1,4 +1,5 @@
 # used help from https://rpubs.com/EricLimBG/capstone-milestone
+# also help from https://rstudio-pubs-static.s3.amazonaws.com/70404_8c1850b3159449fb9cb6561588fc0aaa.html
 # Preload necessary R librabires
 library(dplyr)
 library(doParallel)

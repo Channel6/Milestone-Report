@@ -83,10 +83,6 @@ head(news, 5)
 
 We analyse basic statistics of the 3 data files, including **line**, **character** and **word** counts, and Words Per Line (WPL) summaries. Basic histograms are also plotted to identified distribution of these data.
 
-From the statistics, we observed that WPL for blogs are generally higher (at 41.75 mean), followed by news (at 34.41 mean) and tweets (at 12.75 mean). This may be reflective of the expected attention-span of readers of these contents.
-
-From the histograms, we also noticed that the WPL for all data types are right-skewed (i.e. longer right tail). This may be an indication of the general trend towards short and concised communications.
-
 ```{r echo=TRUE}
 rawstats<-data.frame(
 	File=c("blogs","news","twitter"),
@@ -149,6 +145,21 @@ rm(rawWPL);rm(rawstats)
 The frequency distributions of the “blogs” and “news” corpora are similar (appearing to be log-normal).
 The frequency distribution of the “twitter” corpus is again different, as a result of the 140 character limit.
 
+From the statistics, we observed that WPL for blogs are generally higher (at 41.75 mean), followed by news (at 34.41 mean) and tweets (at 12.75 mean). This may be reflective of the expected attention-span of readers of these contents.
+
+From the histograms, we also noticed that the WPL for all data types are right-skewed (i.e. longer right tail). This may be an indication of the general trend towards short and concised communications.
+
 ## Get feedback on your plans for creating a prediction algorithm and Shiny app
 
-For final project, it will be required to work on the training predictive models using training data sets within the corpora. It will be required to compare respective models for each type of text - blogs, news & Twitter & to understand and how these perform against aggregate models trained off the entire corpus that spans the 3 types of text files.
+### A big-picture approach to accomplishing the Shiny application
+
+1. Continuing cleaning the corpus to to increase the accuracy of the model;
+2. Define and refine the sampling process for getting a good ngram representation without using the entire corpus;
+3. Build and test final prediction model.
+
+Current word prediction will employ mono-gram prediction data. Next-wor prediction will employ: bi-gram, tri-gram and quadri-gram prediction data.
+
+### Requirements for the final project
+
+Work on the training predictive models using training data sets within the corpora.
+Compare respective models for each type of text - blogs, news & Twitter & to understand and how these perform against aggregate models trained off the entire corpus that spans the 3 types of text files.
